@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>transcript</title>
+
+	<script src="https://raw.github.com/gist/1211416/raf.js"></script>
+	<script src="http://code.jquery.com/jquery-git.js"></script>
+	<script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+
+	<script>
+
+	var savedtimes = [],
+	times = [
+		0.5,
+		0.8,
+		1.1,
+
+		2.7,
+		3.0,
+		3.7,
+		3.9,
+		4.1,
+		4.3,
+		4.7,
+
+		5.5,
+
+		6.0,
+		6.3,
+		6.5,
+		6.7,
+		6.8,
+
+		8.4,
+		9.4,
+		9.5,
+		9.8
+	],
+	words = [
+		"anonymous",
+		"spoke",
+		"saying",
+
+		"ie",
+		"v",
+		"one",
+		"point",
+		"four",
+		"point",
+		"one",
+
+		"",
+
+		"one",
+		"point",
+		"four",
+		"point",
+		"four",
+
+		"problems",
+		"in",
+		"unique",
+		"ways"
+	];
+
+	$(function() {
+
+		var pop = Popcorn("#voo");
+
+		requestAnimFrame(function raf() {
+			$("#time").val( pop.currentTime() );
+			requestAnimFrame( raf );
+		});
+
+		$.each( times, function( i, time ) {
+			pop.cue( time, function() {
+				$("h1").html( words[ i ] );
+			});
+		});
+
+	});
+	</script>
+</head>
+<body>
+<video id="voo" controls>
+<source src="../assets/voo-demo.m4v"></source>
+</video>
+<input type="text" id="time" value="">
+<button>Save</button>
+
+<h1></h1>
+
+</body>
+</html>
+

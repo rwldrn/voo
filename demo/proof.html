@@ -65,16 +65,18 @@
 
 	$(function() {
 
-		var pop = Popcorn("#voo");
+		var pop = Popcorn("#voo"),
+				$time = $("#time"),
+				$h1 = $("h1");
 
 		requestAnimFrame(function raf() {
-			$("#time").val( pop.currentTime() );
+			$time.val( pop.currentTime() );
 			requestAnimFrame( raf );
 		});
 
 		$.each( times, function( i, time ) {
 			pop.cue( time, function() {
-				$("h1").html( words[ i ] );
+				$h1.html( words[ i ] );
 			});
 		});
 
